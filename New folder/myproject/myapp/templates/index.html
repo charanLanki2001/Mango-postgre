@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Template</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        /* Adding a gradient animated background */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            
+            background: linear-gradient(45deg, #f706b7, #a62906, #d3e367);
+            background-size: 300% 300%;
+            animation: gradientAnimation 8s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #060000;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #110202;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .success-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            padding: 20px;
+            border-radius: 50%;
+            font-size: 18px;
+            display: none;
+            animation: explosion 1s ease forwards;
+        }
+
+        @keyframes explosion {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                background: radial-gradient(circle, #ff0000, #ffa500, #ffff00);
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border: 2px solid #870041;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 30%;
+            margin: 20px auto;
+        }
+
+        h3 {
+            color: #090909;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 2px solid #b19911;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #a8b916;
+            box-shadow: 0 0 10px #ff6f61;
+        }
+
+        button {
+            background-color: #ff6f61;
+            color: #121111;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #23f70b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data from MongoDB</h1>
+   
+
+    <div id="successMessage" class="success-message">
+        🎉 Added Successfully! 🎆
+    </div>
+
+    <h2>Please Enter the Details</h2>
+    <form method="post">
+        {% csrf_token %}
+        <h3>Username</h3>
+        <input type="text" name="username" placeholder="Enter your username" required>
+        <h3>Password</h3>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <script>
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000); // Hide after 2 seconds
+        }
+    </script>
+</body>
+</html>
